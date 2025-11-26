@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --body-gradient: linear-gradient(140deg, #0b0c14, #161b29, #0b0c14);
+}
+
+@layer base {
+  body {
+    @apply font-body antialiased min-h-screen bg-[#0b0c14] text-slate-100;
+    background-image: var(--body-gradient);
+  }
+
+  ::selection {
+    background: #00f6ff;
+    color: #05060c;
+  }
+}
+
+@layer components {
+  .tag-chip {
+    @apply rounded-full border border-white/20 bg-white/10 px-4 py-1 text-sm text-white/90 backdrop-blur;
+  }
+
+  .card-gradient {
+    background: radial-gradient(
+        circle at top,
+        rgba(255, 255, 255, 0.12),
+        transparent 55%
+      ),
+      rgba(15, 16, 28, 0.8);
+  }
+
+  .glass-panel {
+    @apply rounded-3xl border border-white/10 bg-white/5 p-6 text-slate-100 shadow-glass-lg backdrop-blur-xl;
+  }
+}
