@@ -44,4 +44,4 @@ await initDB();
 // Instead export the handler
 const handler = serverless(app);
 
-export { handler };
+export default handler;
