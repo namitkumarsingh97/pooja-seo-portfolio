@@ -1,22 +1,35 @@
+import poojaImg from "../assets/pooja.jpg";
+
 export const profile = {
   name: "Kumari Pooja",
   title: "SEO & Digital Marketing Executive",
   roleFocus: "Organic Growth Architect · Brand Growth Partner",
   location: "New Ashok Nagar, Delhi",
-  avatar:
-    "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=facearea&w=500&h=500&q=80",
+  avatar: poojaImg,
   contact: {
     phone: "+91-9027568164",
     email: "pooja639938@gmail.com",
-    linkedin: "https://www.linkedin.com/in/kumari-pooja-8ab5061b4",
+    linkedin: "https://www.linkedin.com/in/pooja-digital-marketing",
   },
   summary:
     "Junior SEO & Digital Marketing Executive with 1.5+ years across on-page, off-page, and content systems. I blend research-driven storytelling with collaborative execution to deliver measurable growth.",
   availability: "Open to remote-friendly SEO roles & creative retainers",
   heroStats: [
-    { label: "Avg. Technical Fix Rate", value: "92%", detail: "per audit sprint" },
-    { label: "Backlink Trust Lift", value: "+68", detail: "avg. DR delta in 90 days" },
-    { label: "Content Briefs", value: "130+", detail: "keyword-aligned outlines" },
+    {
+      label: "Avg. Technical Fix Rate",
+      value: "92%",
+      detail: "per audit sprint",
+    },
+    {
+      label: "Backlink Trust Lift",
+      value: "+68",
+      detail: "avg. DR delta in 90 days",
+    },
+    {
+      label: "Content Briefs",
+      value: "130+",
+      detail: "keyword-aligned outlines",
+    },
   ],
   mission:
     "Design resilient, data-backed SEO ecosystems that keep brands discoverable across search journeys and branded touchpoints.",
@@ -84,9 +97,21 @@ export const keywordCloud = [
 
 export const skills = {
   metrics: [
-    { label: "On-Page SEO", score: 92, narrative: "Meta + schema + IA refreshes" },
-    { label: "Off-Page SEO", score: 88, narrative: "Guest, profiles, outreach" },
-    { label: "Technical Hygiene", score: 80, narrative: "Audits & health checks" },
+    {
+      label: "On-Page SEO",
+      score: 92,
+      narrative: "Meta + schema + IA refreshes",
+    },
+    {
+      label: "Off-Page SEO",
+      score: 88,
+      narrative: "Guest, profiles, outreach",
+    },
+    {
+      label: "Technical Hygiene",
+      score: 80,
+      narrative: "Audits & health checks",
+    },
     { label: "Keyword Strategy", score: 94, narrative: "Intent maps + briefs" },
   ],
   tags: [
@@ -124,7 +149,8 @@ export const caseStudies = [
   },
   {
     title: "Local Discovery Sprint for Delhi Retailer",
-    problem: "Store pages missing local pack visibility and inconsistent NAP data.",
+    problem:
+      "Store pages missing local pack visibility and inconsistent NAP data.",
     strategy:
       "Audited citations, standardized NAP, rolled out localized landing copy, and captured review snippets.",
     execution: [
@@ -155,10 +181,26 @@ export const caseStudies = [
 ];
 
 export const analyticsKPIs = [
-  { label: "Organic ROI Uplift", value: "38%", descriptor: "YoY pipeline via organic" },
-  { label: "Keyword Dominance", value: "24 → 58", descriptor: "Top 10 keywords tracked" },
-  { label: "Audit Health Score", value: "64 → 92", descriptor: "Sitebulb health in 2 sprints" },
-  { label: "Referral Traffic", value: "+47%", descriptor: "From curated backlinks" },
+  {
+    label: "Organic ROI Uplift",
+    value: "38%",
+    descriptor: "YoY pipeline via organic",
+  },
+  {
+    label: "Keyword Dominance",
+    value: "24 → 58",
+    descriptor: "Top 10 keywords tracked",
+  },
+  {
+    label: "Audit Health Score",
+    value: "64 → 92",
+    descriptor: "Sitebulb health in 2 sprints",
+  },
+  {
+    label: "Referral Traffic",
+    value: "+47%",
+    descriptor: "From curated backlinks",
+  },
 ];
 
 export const testimonials = [
@@ -199,13 +241,15 @@ export const projects = [
     title: "Keyword Mapping & Content Notes",
     description:
       "Drafted keyword lists from Google Keyword Planner and paired them with blog topics to guide content intent.",
-    impact: "Enabled content team to deliver highly aligned posts on first pass.",
+    impact:
+      "Enabled content team to deliver highly aligned posts on first pass.",
   },
   {
     title: "Backlink Quality Lift",
     description:
       "Maintained submission tracker, pruned low-value links, and replaced them with targeted outreach placements.",
-    impact: "Captured 5–6 higher-authority backlinks and nudged referral traffic upward.",
+    impact:
+      "Captured 5–6 higher-authority backlinks and nudged referral traffic upward.",
   },
 ];
 
@@ -223,4 +267,3 @@ export const tools = [
   "MS Office / Google Workspace",
   "Google Keyword Planner",
 ];
-
