@@ -88,4 +88,3 @@ export const deletePost = async (id) => {
   if (!res.ok) throw new Error("Failed to delete post");
   return res.json();
 };
-

@@ -1,5 +1,6 @@
 /* eslint-env node */
 /* global process */
+import "dotenv/config";
 
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL || "";
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "";
