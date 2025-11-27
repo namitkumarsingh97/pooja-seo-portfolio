@@ -1,3 +1,14 @@
+# Environment configs
+.env
+server/.env
+
+# Dependency directories
+node_modules/
+/server/node_modules/
+
+# Build output
+dist/
+.vercel/
 # Logs
 logs
 *.log

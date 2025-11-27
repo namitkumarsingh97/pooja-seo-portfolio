@@ -7,8 +7,12 @@ import { blogPosts as fallbackPosts } from "../data/blogs";
 import { Link } from "react-router-dom";
 import { fetchPosts } from "../services/blogService";
 
-const BlogCard = ({ post }) => (
-  <Link
+const BlogCard = ({ post }) => {
+  const displayDate =
+    post.date ||
+    (post.createdAt ? new Date(post.createdAt).toLocaleDateString() : "");
+  return (
+    <Link
     to={`/blog/${post.slug}`}
     className="group rounded-3xl border border-white/10 bg-white/5 p-5 text-white/80 shadow-glass-lg transition hover:border-neon.blue/30"
   >
@@ -21,19 +25,25 @@ const BlogCard = ({ post }) => (
       />
     </div>
     <p className="mt-4 text-xs uppercase tracking-[0.3em] text-white/50">
-      {post.date}
+      {displayDate}
     </p>
     <h3 className="mt-1 text-2xl font-semibold text-white">{post.title}</h3>
     <p className="mt-2 text-sm text-white/80">{post.summary}</p>
-    <div className="mt-4 flex flex-wrap gap-2 text-xs">
-      {post.tags.map((tag) => (
-        <span key={tag} className="rounded-full border border-white/15 px-3 py-1">
-          {tag}
-        </span>
-      ))}
-    </div>
-  </Link>
-);
+    {Array.isArray(post.tags) && post.tags.length > 0 && (
+      <div className="mt-4 flex flex-wrap gap-2 text-xs">
+        {post.tags.map((tag) => (
+          <span
+            key={tag}
+            className="rounded-full border border-white/15 px-3 py-1"
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+    )}
+    </Link>
+  );
+};
 
 const BlogList = () => {
   const [posts, setPosts] = useState(fallbackPosts);

@@ -63,6 +63,10 @@ const BlogPost = () => {
     return null;
   }
 
+  const displayDate =
+    post.date ||
+    (post.createdAt ? new Date(post.createdAt).toLocaleDateString() : "");
+
   return (
     <div className="relative min-h-screen text-white">
       <BackgroundFX />
@@ -71,16 +75,21 @@ const BlogPost = () => {
         <article className="mt-12 space-y-6 rounded-[2rem] border border-white/10 bg-white/5 p-10 shadow-glass-lg">
           <div className="space-y-2">
             <p className="text-xs uppercase tracking-[0.3em] text-white/60">
-              {post.date}
+              {displayDate}
             </p>
             <h1 className="text-4xl font-heading">{post.title}</h1>
-            <div className="flex flex-wrap gap-2 text-xs">
-              {post.tags.map((tag) => (
-                <span key={tag} className="rounded-full border border-white/15 px-3 py-1">
-                  {tag}
-                </span>
-              ))}
-            </div>
+            {!!(post.tags && post.tags.length) && (
+              <div className="flex flex-wrap gap-2 text-xs">
+                {post.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full border border-white/15 px-3 py-1"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
           <div className="overflow-hidden rounded-2xl">
             <img
@@ -96,7 +105,11 @@ const BlogPost = () => {
             </p>
           )}
           <div className="prose prose-invert max-w-none">
-            <ReactMarkdown>{post.content}</ReactMarkdown>
+            {/</.test(post.content || "") && />/.test(post.content || "") ? (
+              <div dangerouslySetInnerHTML={{ __html: post.content }} />
+            ) : (
+              <ReactMarkdown>{post.content}</ReactMarkdown>
+            )}
           </div>
           <Link to="/blog" className="text-neon.blue hover:underline">
             ← Back to Blog

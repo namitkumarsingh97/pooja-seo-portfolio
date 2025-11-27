@@ -5,6 +5,7 @@ import cors from "cors";
 import morgan from "morgan";
 import dotenv from "dotenv";
 import postsRouter from "../server/src/routes/posts.js";
+import adminRouter from "../server/src/routes/admin.js";
 import { connectDB } from "../server/src/config/db.js";
 import serverless from "serverless-http";
 
@@ -13,7 +14,16 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+const allowedOrigins = process.env.CORS_ALLOW_ORIGINS
+  ? process.env.CORS_ALLOW_ORIGINS.split(",").map((origin) => origin.trim())
+  : true;
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(morgan("dev"));
 
@@ -22,6 +32,7 @@ app.get("/", (_req, res) => {
 });
 
 app.use("/api/posts", postsRouter);
+app.use("/api/admin", adminRouter);
 
 // Ensure DB connection happens only once per cold start
 let isDBConnected = false;

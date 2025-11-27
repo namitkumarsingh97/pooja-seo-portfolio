@@ -8,7 +8,12 @@ const PostSchema = new mongoose.Schema(
     heroImage: { type: String },
     tags: [{ type: String }],
     content: { type: String, required: true },
-    published: { type: Boolean, default: true },
+    status: {
+      type: String,
+      enum: ["draft", "published"],
+      default: "draft",
+    },
+    published: { type: Boolean, default: false },
   },
   { timestamps: true }
 );

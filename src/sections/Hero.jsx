@@ -6,7 +6,7 @@ const stagger = {
   animate: { opacity: 1, y: 0 },
 };
 
-const Hero = ({ profile, keywords }) => (
+const Hero = ({ profile }) => (
   <section id="home" className="relative pt-10">
     <div className="space-y-8 rounded-[2.5rem] border border-white/10 bg-[#141926]/90 p-8 text-slate-100 shadow-glass-lg backdrop-blur-3xl">
       <div className="flex flex-col gap-8 lg:flex-row lg:items-center">
