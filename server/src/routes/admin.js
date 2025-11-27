@@ -14,5 +14,5 @@ router.post("/login", loginAdmin);
 router.post("/logout", requireAdminSessionOnly, logoutAdmin);
 router.get("/session", requireAdminSessionOnly, getAdminSession);
 router.get("/posts", requireAdminSessionOnly, listAllPosts);
-export default router;
 
+export default router;

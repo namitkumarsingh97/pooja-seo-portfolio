@@ -7,23 +7,26 @@ const hasBrowserLocation =
 const API_BASE =
   trimmedEnv || (hasBrowserLocation ? globalThis.location.origin : "");
 
+// On Vercel, all routes become /api/api/*
+const API_PREFIX = import.meta.env.PROD ? "/api" : "";
+
 const jsonHeaders = { "Content-Type": "application/json" };
 const includeCreds = { credentials: "include" };
 
 export const fetchPosts = async () => {
-  const res = await fetch(`${API_BASE}/api/posts`);
+  const res = await fetch(`${API_BASE}${API_PREFIX}/api/posts`);
   if (!res.ok) throw new Error("Failed to load posts");
   return res.json();
 };
 
 export const fetchPost = async (slug) => {
-  const res = await fetch(`${API_BASE}/api/posts/${slug}`);
+  const res = await fetch(`${API_BASE}${API_PREFIX}/api/posts/${slug}`);
   if (!res.ok) throw new Error("Not found");
   return res.json();
 };
 
 export const createPost = async (payload) => {
-  const res = await fetch(`${API_BASE}/api/posts`, {
+  const res = await fetch(`${API_BASE}${API_PREFIX}/api/posts`, {
     method: "POST",
     headers: jsonHeaders,
     body: JSON.stringify(payload),
@@ -34,7 +37,7 @@ export const createPost = async (payload) => {
 };
 
 export const adminLogin = async (email, password) => {
-  const res = await fetch(`${API_BASE}/api/admin/login`, {
+  const res = await fetch(`${API_BASE}${API_PREFIX}/api/admin/login`, {
     method: "POST",
     headers: jsonHeaders,
     body: JSON.stringify({ email, password }),
@@ -45,7 +48,7 @@ export const adminLogin = async (email, password) => {
 };
 
 export const adminLogout = async () => {
-  const res = await fetch(`${API_BASE}/api/admin/logout`, {
+  const res = await fetch(`${API_BASE}${API_PREFIX}/api/admin/logout`, {
     method: "POST",
     ...includeCreds,
   });
@@ -54,7 +57,7 @@ export const adminLogout = async () => {
 };
 
 export const fetchAdminSession = async () => {
-  const res = await fetch(`${API_BASE}/api/admin/session`, {
+  const res = await fetch(`${API_BASE}${API_PREFIX}/api/admin/session`, {
     ...includeCreds,
   });
   if (!res.ok) throw new Error("No active session");
@@ -62,7 +65,7 @@ export const fetchAdminSession = async () => {
 };
 
 export const fetchAdminPosts = async () => {
-  const res = await fetch(`${API_BASE}/api/admin/posts`, {
+  const res = await fetch(`${API_BASE}${API_PREFIX}/api/admin/posts`, {
     ...includeCreds,
   });
   if (!res.ok) throw new Error("Failed to load admin posts");
@@ -70,7 +73,7 @@ export const fetchAdminPosts = async () => {
 };
 
 export const updatePost = async (id, payload) => {
-  const res = await fetch(`${API_BASE}/api/posts/${id}`, {
+  const res = await fetch(`${API_BASE}${API_PREFIX}/api/posts/${id}`, {
     method: "PUT",
     headers: jsonHeaders,
     body: JSON.stringify(payload),
@@ -81,7 +84,7 @@ export const updatePost = async (id, payload) => {
 };
 
 export const deletePost = async (id) => {
-  const res = await fetch(`${API_BASE}/api/posts/${id}`, {
+  const res = await fetch(`${API_BASE}${API_PREFIX}/api/posts/${id}`, {
     method: "DELETE",
     ...includeCreds,
   });
