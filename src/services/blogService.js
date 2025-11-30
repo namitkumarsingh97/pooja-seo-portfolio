@@ -1,23 +1,4 @@
-// Normalize VITE_API_URL: remove trailing slash and /api if present
-// We always append /api ourselves, so VITE_API_URL should be just the backend server URL
-// Example: https://your-backend-server.vercel.app or https://api.yourdomain.com
-let apiBase = import.meta.env.VITE_API_URL;
-if (apiBase) {
-  apiBase = apiBase.replace(/\/$/, ""); // Remove trailing slash
-  apiBase = apiBase.replace(/\/api$/, ""); // Remove trailing /api if present
-}
-
-const hasBrowserLocation =
-  typeof globalThis !== "undefined" &&
-  typeof globalThis.location === "object" &&
-  typeof globalThis.location.origin === "string";
-
-// If VITE_API_URL is not set, it will use the same origin (for local dev)
-// In production, you MUST set VITE_API_URL to your backend server URL
-const API_BASE =
-  apiBase || (hasBrowserLocation ? globalThis.location.origin : "");
-
-// Always append /api to make requests like /api/posts, /api/admin/login, etc.
+const API_BASE = import.meta.env.VITE_API_URL;
 
 const jsonHeaders = { "Content-Type": "application/json" };
 const includeCreds = { credentials: "include" };
